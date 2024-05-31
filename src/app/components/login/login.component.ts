@@ -33,7 +33,7 @@ export class LoginComponent {
     this.router.navigate(["/loading"])
     setTimeout(() => {
       this.router.navigate([""]);
-    }, 3000); // 3 saniye beklet //
+    }, 3000); // 3 saniye beklettik. //
     this._http.get("https://jsonplaceholder.typicode.com/todos/").subscribe(res => {
       console.log(res);
     });
