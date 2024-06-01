@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { Router, RouterLink } from '@angular/router';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
-import { AuthInterceptor } from '../../auth.interceptor';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -12,14 +11,7 @@ import { CommonModule } from '@angular/common';
     CommonModule,
     NavbarComponent,
     RouterLink,
-    HttpClientModule
-  ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true
-    }
+    //HttpClientModule burası eziyor
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
@@ -34,7 +26,7 @@ export class LoginComponent {
     setTimeout(() => {
       this.router.navigate([""]);
     }, 3000); // 3 saniye beklettik. //
-    this._http.get("https://jsonplaceholder.typicode.com/todos/").subscribe(res => {
+    this._http.post("https://jsonplaceholder.typicode.com/posts", {}).subscribe(res => {
       console.log(res);
     });
   }
